@@ -90,9 +90,11 @@ Programmatic access to the Mapbox Upload API requires a Mapbox private key with 
 #### Execute from command line (Cygwin CLI on Windows, or Mac OS):
 The uploader script takes as arguments an input shapefile or zipped shapefile, a Mapbox private key, and a max zoom level. For lines and polygons, a max zoom level of at least 10 is recommended. For points, it is recommended that tile generation be skipped by omitting the max zoom level parameter. The script will convert the input data to vector tile layers, and will update any Mapbox-hosted tile layers having the same name within the account associated with the input key. Enter the following command to execute, either while inside the script's directory or by providing the absolute rather than relative paths to the script and input directory:
 ```
-python arc2mb.py {input shapefile} {Mapbox token} {max zoom level, optional}
+python mapbox_uploader.py {input shapefile} {Mapbox token} {max zoom level, optional}
 ```
-**i.e.:** `python arc2mb.py input.shp sk.eyJ1IjoibmJ1bWJhcmciLCJ... 10`
+**i.e.:** `python mapbox_uploader.py input.shp sk.eyJ1IjoibmJ1bWJhcmciLCJ... 10`
+**i.e.:** `python mapbox_uploader.py ../MapboxLayers/shapefileNAme.shp sk.eyJ1IjoiaWNyYyIsImEiOiJjaXBqdDd 10`
+
 
 #### Execute from Python scripts (Cygwin CLI on Windows, or Mac OS):
 This script can be executed from other scripts in the same directory by simply importing it, as long as the calling environment is the same as the script's processing environment (i.e., as long as the calling script is also running in either Cygwin or Mac OS). For calling instructions from a program that is running on Windows instead, see below.
