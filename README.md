@@ -34,9 +34,9 @@ On Windows, a version of tippecanoe must be specially compiled from its source c
 
 3. Open the newly installed Cygwin64 Terminal application when installation is complete.
 4. Ensure the proxy is setup to allow for web installation of the Python Package Manager:
--- proxy= XXXXX.icrc.priv:8080
--- export https_proxy=http://XXXXX.icrc.priv:8080
--- export http_proxy=http://XXXXX.icrc.priv:8080
+    `proxy= XXXXX.icrc.priv:8080`
+    `export https_proxy=http://XXXXX.icrc.priv:8080`
+    `export http_proxy=http://XXXXX.icrc.priv:8080`
 
 5. Install the Python Package Manager by typing
 
@@ -54,15 +54,15 @@ On Windows, a version of tippecanoe must be specially compiled from its source c
 
 9. Back in the Cygwin terminal, enter the tippecanoe directory by typing
 
-    `cd tippecanoe`.
+    `cd tippecanoe`
 
 10. Compile the tippecanoe source code by typing
 
-    `make`.
+    `make`
 
 11. Finally, install the compiled program by typing
 
-    `make install`.
+    `make install`
 
 Tippecanoe is now ready for use, and the source directory at `C:\cygwin64\home\{your username}\tippecanoe` can be deleted if desired.
 
@@ -87,17 +87,15 @@ Programmatic access to the Mapbox Upload API requires a Mapbox private key with 
 ## Script usage
 #### Execute from command line (Cygwin CLI on Windows):
 The uploader script takes as arguments an input shapefile or zipped shapefile, a name for the output layer (this layer will be overwritten if it exists on the remote Mapbox account), a Mapbox private key, and a max zoom level. For lines and polygons, a max zoom level of at least 10 is recommended. For points, it is recommended that tile generation be skipped by omitting the max zoom level parameter. The script will convert the input data to vector tile layers, and will update any Mapbox-hosted tile layers having the same name within the account associated with the input key. Enter the following command to execute, either while inside the script's directory or by providing the absolute rather than relative paths to the script and input directory:
-```
-python mapbox_uploader.py {input shapefile} {output layer name} {Mapbox token} {max zoom level, optional}
-```
-**i.e.:** `python mapbox_uploader.py input.shp output_layer sk.xxxxxxxxxx... 10`
+
+`python mapbox_uploader.py {input shapefile} {output layer name} {Mapbox token} {max zoom level, optional}`
+
 **i.e.:** `python mapbox_uploader.py ../MapboxLayers/input.shp output_layer sk.xxxxxxxxxx 10`
 
 ##### Regarding file paths in Cygwin
 Cygwin provides connections to drives outside of its internal filesystem through a mount point called /cygdrive/. If your data files are outside of Cygwin's simulated Linux filesystem, you will need to prepend /cygdrive/{lowercase drive letter}/ to the path. For example, to access files on a computer's D drive, you would write:
-```
-python mapbox_uploader.py "/cygdrive/d/Projets/Geoportal/Server Objects/Data/Temp/Mapbox/MapboxLayers/input.shp" output_layer   sk.xxxxxxxxxx 10
-```
+
+`python mapbox_uploader.py "/cygdrive/d/Projets/Geoportal/Server Objects/Data/Temp/Mapbox/MapboxLayers/input.shp" output_layer sk.xxxxxxxxxx 10`
 
 Notice the quotes surrounding the path- quotes are necessary when referencing paths that contain spaces, or else each unbroken part of the string will be interpreted as a separate, nonsensical command. Also, in a Python script, if a string contains quotes it must be wrapped in a different kind of quotes, such as single quotes.
 
@@ -110,9 +108,9 @@ arc2mb({input directory}, {Mapbox token}, {output layer name, {max zoom level})
 
 #### Execute from Windows command line:
 Scripts in the Cygwin environment can be executed from the Windows command line or through Windows batch commands by providing the path to Cygwin's bash (Linux command line) executable as the first argument, followed by the `--login` flag, followed by the `-c` flag, followed by a text string of the same command you would use within Cygwin using absolute paths, as shown below:
-```
-c:\cygwin64\bin\bash --login -c "python {abs. path to script} {abs. path to input shp.} {output layer name} {Mapbox token} {max zoom level}"
-```
+
+`c:\cygwin64\bin\bash --login -c "python {abs. path to script} {abs. path to input shp.} {output layer name} {Mapbox token} {max zoom level}"`
+
 **i.e.:** `c:\cygwin64\bin\bash --login -c "python ~/ArcGIS2Mapbox/arc2mb.py ~/icrc_data/input.shp output_layer sk.xxxxxxxxxx 10"`
 
 #### Execute from Windows Python scripts (i.e. scripts tied to arcpy):
