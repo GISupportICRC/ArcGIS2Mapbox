@@ -88,14 +88,14 @@ Programmatic access to the Mapbox Upload API requires a Mapbox private key with 
 #### Execute from command line (Cygwin CLI on Windows):
 The uploader script takes as arguments an input shapefile or zipped shapefile, a name for the output layer (this layer will be overwritten if it exists on the remote Mapbox account), a Mapbox private key, and a max zoom level. For lines and polygons, a max zoom level of at least 10 is recommended. For points, it is recommended that tile generation be skipped by omitting the max zoom level parameter. The script will convert the input data to vector tile layers, and will update any Mapbox-hosted tile layers having the same name within the account associated with the input key. Enter the following command to execute, either while inside the script's directory or by providing the absolute rather than relative paths to the script and input directory:
 
-`python mapbox_uploader.py {input shapefile} {output layer name} {Mapbox token} {max zoom level, optional}`
+`python arc2mb.py {input shapefile} {output layer name} {Mapbox token} {max zoom level, optional}`
 
-**i.e.:** `python mapbox_uploader.py ../MapboxLayers/input.shp output_layer sk.xxxxxxxxxx 10`
+**i.e.:** `python arc2mb.py ../MapboxLayers/input.shp output_layer sk.xxxxxxxxxx 10`
 
 ##### Regarding file paths in Cygwin
 Cygwin provides connections to drives outside of its internal filesystem through a mount point called /cygdrive/. If your data files are outside of Cygwin's simulated Linux filesystem, you will need to prepend /cygdrive/{lowercase drive letter}/ to the path. For example, to access files on a computer's D drive, you would write:
 
-`python mapbox_uploader.py "/cygdrive/d/Projets/Geoportal/Server Objects/Data/Temp/Mapbox/MapboxLayers/input.shp" output_layer sk.xxxxxxxxxx 10`
+`python arc2mb.py "/cygdrive/d/Projets/Geoportal/Server Objects/Data/Temp/Mapbox/MapboxLayers/input.shp" output_layer sk.xxxxxxxxxx 10`
 
 Notice the quotes surrounding the path- quotes are necessary when referencing paths that contain spaces, or else each unbroken part of the string will be interpreted as a separate, nonsensical command. Also, in a Python script, if a string contains quotes it must be wrapped in a different kind of quotes, such as single quotes.
 
