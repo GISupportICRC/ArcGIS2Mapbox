@@ -112,6 +112,13 @@ Scripts in the Cygwin environment can be executed from the Windows command line 
 c:\cygwin64\bin\bash --login -c "python {abs. path to script} {abs. path to input shp.} {Mapbox token} {max zoom level}"
 ```
 **i.e.:** `c:\cygwin64\bin\bash --login -c "python ~/ArcGIS2Mapbox/arc2mb.py ~/icrc_data/input.shp sk.eyJ1IjoibmJ1bWJhcmciLCJ... 10"`
+```
+python Script_Shp2Mapbox.py "/cygdrive/d/Projets/Geoportal/Server Objects/Data/Temp/Mapbox/MapboxLayers/input.shp"   sk.eyJ1IjoiaWNyYyIsImxxxxx 10
+```
+Notice the quotes surrounding the path- quotes are necessary when referencing paths that contain spaces, or else each unbroken part of the string will be interpreted as a separate, nonsensical command. Also, in a Python script, if a string contains quotes it must be wrapped in a different kind of quotes, such as single quotes.
+
+
+
 
 #### Execute from Windows Python scripts (i.e. scripts tied to arcpy):
 Similarly, it is possible to directly call the script through the Cygwin shell from within Python scripts that are running on the Windows environment, such as through the example below:
