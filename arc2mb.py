@@ -360,7 +360,7 @@ def main(shp_path, tileset_name, mb_token, max_zoom):
     base_path, name = os.path.split(shp_path)
     name, ext = os.path.splitext(name)
 
-    print "Processing " + name
+    print "\nProcessing " + name
 
     # unzip shapefile if necessary
     if ext == ".zip":
