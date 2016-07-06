@@ -190,6 +190,8 @@ class Uploader(Service):
         if name is not None:
             msg["name"] = name.replace(" ", "_")[0:31]
 
+        print msg
+
         uri = URITemplate(self.baseuri + "/{username}").expand(
             username=self.username)
 
@@ -347,22 +349,26 @@ def shp_to_json(base_path, shp_path, name):
 """Main driver"""
 
 
-def main(shp_path, mb_token, max_zoom):
+def main(shp_path, lyr_name, mb_token, max_zoom):
     """Main loop which creates Uploader class instance, converts shapefiles
-    to WGS-84 projected GeoJSON, generates vector tile layers, uploads
-    tile layers to Amazon S3 staging bucket, and dispatches the packages
-    to the Mapbox Uploader API.
+    or zipped shapefiles to WGS-84 projected GeoJSON, generates vector tile
+    layers, uploads tile layers to Amazon S3 staging bucket, and dispatches
+    the packages to the Mapbox Uploader API. If no max zoom is specified,
+    the function simply zips the shapefile and submits the package to the
+    Uploader API.
     """
     base_path, name = os.path.split(shp_path)
     name, ext = os.path.splitext(name)
 
     print "Processing " + name
-
+    
+    # unzip shapefile if necessary
     if ext == ".zip":
         shp_path = unzip_shapefile(shp_path)
         base_path, name = os.path.split(shp_path)
         name = os.path.splitext(name)[0]
-
+    
+    # instantiate the uploader service
     service = Uploader()
     service.session.params["access_token"] = mb_token
 
@@ -374,10 +380,12 @@ def main(shp_path, mb_token, max_zoom):
         # cleanup the intermediate GeoJSON data
         os.remove(json_path)
     else:
+        # if no max zoom specified, skip GeoJSON/ tippecanoe step, zip
+        # shapefile into package, and continue uploading
         package = zip_shapefile(os.path.join(base_path, name))
     # dispatch mbtiles to the uploader service
     with open(package, "r") as src:
-        upload_resp = service.upload(src, name, name)
+        upload_resp = service.upload(src, lyr_name, lyr_name)
         try:
             print " -- Hosted tileset name is {0}\n".format(
                 upload_resp.json()["tileset"])
@@ -393,18 +401,19 @@ def main(shp_path, mb_token, max_zoom):
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    if len(args) == 3:
-        shp_path, mb_token, max_zoom = args
-    elif len(args) == 2:
-        shp_path, mb_token = args
+    if len(args) == 4:
+        shp_path, lyr_name, mb_token, max_zoom = args
+    elif len(args) == 3:
+        shp_path, lyr_name, mb_token = args
         max_zoom = False
     else:
-        print 'Please enter arguments in the form "python arc2mb' + \
-              '.py {input file path} {Mapbox token} {max zoom level}", or ' + \
-              'python arc2mb.py {input file path} {Mapbox token' + \
-              '}" if skipping tile generation (only reccomended for points).'
+        print 'Please enter arguments in the form "python arc2mb.py ' + \
+              '{input file path} {output layer name} {Mapbox token} ' + \
+              '{max zoom level}", or "python arc2mb.py {input file path} ' + \
+              '{output layer name} {Mapbox token}" if skipping tile ' + \
+              'generation (only recommended for points).'
 
     if os.path.exists(shp_path):
-        main(shp_path, mb_token, max_zoom)
+        main(shp_path, lyr_name, mb_token, max_zoom)
     else:
         print "Input shapefile not found. Please enter a valid path."
