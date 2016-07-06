@@ -176,21 +176,19 @@ class Uploader(Service):
 
         return creds["url"]
 
-    def create(self, stage_url, tileset, name=None):
+    def create(self, stage_url, tileset_name):
         """Initiates the creation process from the
         staging S3 bucket into the user's tileset.
         """
-        if not tileset.startswith(self.username + "."):
-            tileset = "{0}.{1}".format(
-                self.username, tileset.replace(" ", "_")[0:31])
+        if not tileset_name.startswith(self.username + "."):
+            tileset_name = "{0}.{1}".format(
+                self.username, tileset_name.replace(" ", "_")[0:31])
 
-        msg = {"tileset": tileset,
+        msg = {"tileset": tileset_name,
                "url": stage_url}
 
-        if name is not None:
-            msg["name"] = name.replace(" ", "_")[0:31]
-
-        print msg
+        if tileset_name is not None:
+            msg["name"] = tileset_name.replace(" ", "_")[0:31]
 
         uri = URITemplate(self.baseuri + "/{username}").expand(
             username=self.username)
@@ -202,13 +200,13 @@ class Uploader(Service):
 
         return resp
 
-    def upload(self, fileobj, tileset, name=None):
+    def upload(self, fileobj, tileset_name):
         """High level function to upload a file object to Mapbox tileset
         Returns a response object where the json() is a dict with upload
         metadata.
         """
         url = self.stage(fileobj)
-        return self.create(url, tileset, name=name)
+        return self.create(url, tileset_name)
 
 
 """Shapefile packager helper function"""
@@ -349,7 +347,7 @@ def shp_to_json(base_path, shp_path, name):
 """Main driver"""
 
 
-def main(shp_path, lyr_name, mb_token, max_zoom):
+def main(shp_path, tileset_name, mb_token, max_zoom):
     """Main loop which creates Uploader class instance, converts shapefiles
     or zipped shapefiles to WGS-84 projected GeoJSON, generates vector tile
     layers, uploads tile layers to Amazon S3 staging bucket, and dispatches
@@ -385,7 +383,7 @@ def main(shp_path, lyr_name, mb_token, max_zoom):
         package = zip_shapefile(os.path.join(base_path, name))
     # dispatch mbtiles to the uploader service
     with open(package, "r") as src:
-        upload_resp = service.upload(src, lyr_name, lyr_name)
+        upload_resp = service.upload(src, tileset_name)
         try:
             print " -- Hosted tileset name is {0}\n".format(
                 upload_resp.json()["tileset"])
@@ -402,9 +400,9 @@ def main(shp_path, lyr_name, mb_token, max_zoom):
 if __name__ == "__main__":
     args = sys.argv[1:]
     if len(args) == 4:
-        shp_path, lyr_name, mb_token, max_zoom = args
+        shp_path, tileset_name, mb_token, max_zoom = args
     elif len(args) == 3:
-        shp_path, lyr_name, mb_token = args
+        shp_path, tileset_name, mb_token = args
         max_zoom = False
     else:
         print 'Please enter arguments in the form "python arc2mb.py ' + \
@@ -414,6 +412,6 @@ if __name__ == "__main__":
               'generation (only recommended for points).'
 
     if os.path.exists(shp_path):
-        main(shp_path, lyr_name, mb_token, max_zoom)
+        main(shp_path, tileset_name, mb_token, max_zoom)
     else:
         print "Input shapefile not found. Please enter a valid path."
