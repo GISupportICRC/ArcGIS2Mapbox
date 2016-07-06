@@ -100,8 +100,11 @@ python mapbox_uploader.py {input shapefile} {Mapbox token} {max zoom level, opti
 
 Cygwin provides connections to drives outside of its internal filesystem through a mount point called /cygdrive/
 ```
-python Script_Shp2Mapbox.py "/cygdrive/d/Projets/Geoportal/Server Objects/Data/Temp/Mapbox/MapboxLayers/input.shp"   sk.eyJ1IjoiaWNyYyIsImxxxxx 10
+python mapbox_uploader.py "/cygdrive/d/Projets/Geoportal/Server Objects/Data/Temp/Mapbox/MapboxLayers/input.shp"   sk.eyJ1IjoiaWNyYyIsImxxxxx 10
 ```
+
+
+
 Notice the quotes surrounding the path- quotes are necessary when referencing paths that contain spaces, or else each unbroken part of the string will be interpreted as a separate, nonsensical command. Also, in a Python script, if a string contains quotes it must be wrapped in a different kind of quotes, such as single quotes.
 
 
