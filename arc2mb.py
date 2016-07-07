@@ -5,6 +5,7 @@ import base64
 import glob
 import json
 import os.path
+import re
 import shutil
 import subprocess
 import sys
@@ -403,6 +404,8 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     if len(args) == 4:
         shp_path, tileset_name, mb_token, max_zoom = args
+        # sanitize non-numeric characters from max_zoom
+        max_zoom = int(re.sub("[^0-9]", "", max_zoom))
     elif len(args) == 3:
         shp_path, tileset_name, mb_token = args
         max_zoom = False
@@ -412,7 +415,7 @@ if __name__ == "__main__":
               '{max zoom level}", or "python arc2mb.py {input file path} ' + \
               '{output layer name} {Mapbox token}" if skipping tile ' + \
               'generation (only recommended for points).'
-
+    
     if os.path.exists(shp_path):
         main(shp_path, tileset_name, mb_token, max_zoom)
     else:
