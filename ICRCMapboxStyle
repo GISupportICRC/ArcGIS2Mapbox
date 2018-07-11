@@ -1,36 +1,39 @@
-https://{subDomain}.tiles.mapbox.com/v4/icrc.kog3k65g/{level}/{col}/{row}.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w#3
-Title: ICRC light grey
+https://api.mapbox.com/styles/v1/icrc/cjj8hq7ot2a9y2sp1dtql1tsf/tiles/256/{level}/{col}/{row}@2x?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w
+Title: ICRC Light Grey
 Credit :ICRC/OSM. The boundaries, names and designations used in this map do not imply official endorsement, nor express a political opinion on the part of the ICRC, and are without prejudice to claims of
 sovereignty over the territories mentioned.
 Subdomains:a,b,c,d
 ---
-https://{subDomain}.tiles.mapbox.com/v4/icrc.l2dh0c49/{level}/{col}/{row}.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w#3
+https://api.mapbox.com/styles/v1/icrc/cjimxx0wq0p382rtegfrdq8ua/tiles/256/{level}/{col}/{row}@2x?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w
+Title: ICRC Dark Grey 
+Credit :ICRC/OSM. The boundaries, names and designations used in this map do not imply official endorsement, nor express a political opinion on the part of the ICRC, and are without prejudice to claims of
+sovereignty over the territories mentioned.
+Subdomains:a,b,c,d
+---
+https://api.mapbox.com/styles/v1/icrc/cjj8ooip73i1y2rpiug0fr8p0/tiles/256/{level}/{col}/{row}@2x?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w
 Title: ICRC Plan   
 Credit :ICRC/OSM. The boundaries, names and designations used in this map do not imply official endorsement, nor express a political opinion on the part of the ICRC, and are without prejudice to claims of
 sovereignty over the territories mentioned.
 Subdomains:a,b,c,d
 ---
-https://{subDomain}.tiles.mapbox.com/v4/icrc.l0jcnplj/{level}/{col}/{row}.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w#3
+https://api.mapbox.com/styles/v1/icrc/cjja6p4tg0arr2rmvlimbele3/tiles/256/{level}/{col}/{row}@2x?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w
 Title: ICRC Terrain
 Credit :ICRC/OSM. The boundaries, names and designations used in this map do not imply official endorsement, nor express a political opinion on the part of the ICRC, and are without prejudice to claims of
 sovereignty over the territories mentioned.
 Subdomains:a,b,c,d  
 ---
-https://{subDomain}.tiles.mapbox.com/v4/icrc.kog47201/{level}/{col}/{row}.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w#3
+https://api.mapbox.com/styles/v1/icrc/cjjd2z69a30p42rqubagsqpad/tiles/256/{level}/{col}/{row}@2x?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w
 Title: ICRC Satellite
 Credit :ICRC/OSM. The boundaries, names and designations used in this map do not imply official endorsement, nor express a political opinion on the part of the ICRC, and are without prejudice to claims of
 sovereignty over the territories mentioned.
 Subdomains:a,b,c,d
-
 ---
 https://{subDomain}.tiles.mapbox.com/v4/icrc.l06452gp/{level}/{col}/{row}.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w#3
 Title: ICRC light grey shadow
 Credit :ICRC/OSM. The boundaries, names and designations used in this map do not imply official endorsement, nor express a political opinion on the part of the ICRC, and are without prejudice to claims of
 sovereignty over the territories mentioned.
 Subdomains:a,b,c,d
-
-
-
+---
 https://{subDomain}.tiles.mapbox.com/v4/icrc.f34afbb2/{level}/{col}/{row}.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w#3
 Title: ICRC REX white
 Credit :ICRC. The boundaries, names and designations used in this map do not imply official endorsement, nor express a political opinion on the part of the ICRC, and are without prejudice to claims of
@@ -42,12 +45,6 @@ Title: ICRC  Grey CIM Com Digital
 Credit :ICRC. The boundaries, names and designations used in this map do not imply official endorsement, nor express a political opinion on the part of the ICRC, and are without prejudice to claims of
 sovereignty over the territories mentioned.
 Subdomains:a,b,c,d
----
-https://{subDomain}.tiles.mapbox.com/v4/icrc.l2pfifpp/{level}/{col}/{row}.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w#3
-Title: ICRC Dark Grey 
-Credit :ICRC/OSM. The boundaries, names and designations used in this map do not imply official endorsement, nor express a political opinion on the part of the ICRC, and are without prejudice to claims of
-sovereignty over the territories mentioned.
-Subdomains:a,b,c,d
 ---
 https://{subDomain}.tiles.mapbox.com/v4/icrc.4bc03a9a/{level}/{col}/{row}.png?access_token=pk.eyJ1IjoiaWNyYyIsImEiOiJ5dlNMaUhnIn0.QG1pZIPyfyekyHFAS6vb2w#3
 Title: ICRC Grey CIM Com Digital  (do not use as of 01.01.16)
